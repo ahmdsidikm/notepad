@@ -1,3 +1,7 @@
+//Backup kode NOTEPAD
+
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; // Import modul SystemNavigator
 
@@ -24,11 +28,11 @@ class NotepadPage extends StatefulWidget {
 }
 
 class _NotepadPageState extends State<NotepadPage> {
-  TextEditingController _judulController = TextEditingController();
-  TextEditingController _isiController = TextEditingController();
+  final TextEditingController _judulController = TextEditingController();
+  final TextEditingController _isiController = TextEditingController();
 
-  List<Map<String, String>> _catatanDisimpan = [];
-  List<Map<String, String>> _catatanDiarsipkan = [];
+  final List<Map<String, String>> _catatanDisimpan = [];
+  final List<Map<String, String>> _catatanDiarsipkan = [];
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +43,7 @@ class _NotepadPageState extends State<NotepadPage> {
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
-            UserAccountsDrawerHeader(
+            const UserAccountsDrawerHeader(
               accountName: Text('Ahmad Sidik Muttaqin'),
               accountEmail: Text('ahmadsidikmuttaqin@gmail.com'),
               currentAccountPicture: CircleAvatar(
@@ -51,16 +55,16 @@ class _NotepadPageState extends State<NotepadPage> {
               ),
             ),
             ListTile(
-              title: Text('Arsip'),
+              title: const Text('Arsip'),
               onTap: () {
                 _tampilkanArsip();
               },
             ),
-            Divider(), // Tambah garis
+            const Divider(), // Tambah garis
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                   Icons.power_settings_new), // Ikon shutdown di samping teks
-              title: Text('Keluar Aplikasi'),
+              title: const Text('Keluar Aplikasi'),
               onTap: () {
                 Navigator.of(context).pop();
                 // Menutup aplikasi
@@ -83,8 +87,8 @@ class _NotepadPageState extends State<NotepadPage> {
                   background: Container(
                     color: Colors.green,
                     alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.only(left: 20.0),
-                    child: Icon(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: const Icon(
                       Icons.archive,
                       color: Colors.white,
                     ),
@@ -92,8 +96,8 @@ class _NotepadPageState extends State<NotepadPage> {
                   secondaryBackground: Container(
                     color: Colors.red,
                     alignment: Alignment.centerRight,
-                    padding: EdgeInsets.only(right: 20.0),
-                    child: Icon(
+                    padding: const EdgeInsets.only(right: 20.0),
+                    child: const Icon(
                       Icons.delete,
                       color: Colors.white,
                     ),
@@ -116,14 +120,14 @@ class _NotepadPageState extends State<NotepadPage> {
                                 children: [
                                   Text(
                                     _catatanDisimpan[index]['judul']!,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   Text(
                                     _catatanDisimpan[index]['isi']!,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 14,
                                       overflow: TextOverflow.ellipsis,
                                     ),
@@ -137,7 +141,7 @@ class _NotepadPageState extends State<NotepadPage> {
                           _editCatatan(index);
                         },
                       ),
-                      Divider(), // Menambahkan garis setelah setiap item daftar
+                      const Divider(), // Menambahkan garis setelah setiap item daftar
                     ],
                   ),
                 );
@@ -161,19 +165,19 @@ class _NotepadPageState extends State<NotepadPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Buat Catatan'),
+          title: const Text('Buat Catatan'),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 TextField(
                   controller: _judulController,
-                  decoration: InputDecoration(labelText: 'Judul'),
+                  decoration: const InputDecoration(labelText: 'Judul'),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 TextField(
                   controller: _isiController,
-                  decoration: InputDecoration(labelText: 'Isi Catatan'),
+                  decoration: const InputDecoration(labelText: 'Isi Catatan'),
                   maxLines: null,
                 ),
               ],
@@ -184,14 +188,14 @@ class _NotepadPageState extends State<NotepadPage> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Batal'),
+              child: const Text('Batal'),
             ),
             ElevatedButton(
               onPressed: () {
                 _simpanCatatan();
                 Navigator.of(context).pop();
               },
-              child: Text('Simpan'),
+              child: const Text('Simpan'),
             ),
           ],
         );
@@ -206,19 +210,19 @@ class _NotepadPageState extends State<NotepadPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Edit Catatan'),
+          title: const Text('Edit Catatan'),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 TextField(
                   controller: _judulController,
-                  decoration: InputDecoration(labelText: 'Judul'),
+                  decoration: const InputDecoration(labelText: 'Judul'),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 TextField(
                   controller: _isiController,
-                  decoration: InputDecoration(labelText: 'Isi Catatan'),
+                  decoration: const InputDecoration(labelText: 'Isi Catatan'),
                   maxLines: null,
                 ),
               ],
@@ -229,14 +233,14 @@ class _NotepadPageState extends State<NotepadPage> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Batal'),
+              child: const Text('Batal'),
             ),
             ElevatedButton(
               onPressed: () {
                 _simpanCatatan(index);
                 Navigator.of(context).pop();
               },
-              child: Text('Simpan'),
+              child: const Text('Simpan'),
             ),
           ],
         );
@@ -305,15 +309,15 @@ class _NotepadPageState extends State<NotepadPage> {
 class HalamanArsip extends StatefulWidget {
   final List<Map<String, String>> catatanDiarsipkan;
 
-  HalamanArsip({required this.catatanDiarsipkan});
+  const HalamanArsip({required this.catatanDiarsipkan});
 
   @override
   _HalamanArsipState createState() => _HalamanArsipState();
 }
 
 class _HalamanArsipState extends State<HalamanArsip> {
-  TextEditingController _judulController = TextEditingController();
-  TextEditingController _isiController = TextEditingController();
+  final TextEditingController _judulController = TextEditingController();
+  final TextEditingController _isiController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -324,31 +328,56 @@ class _HalamanArsipState extends State<HalamanArsip> {
       body: ListView.builder(
         itemCount: widget.catatanDiarsipkan.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.catatanDiarsipkan[index]['judul']!,
-                  maxLines: 1,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                    height:
-                        4), // Beri sedikit jarak antara judul dan isi catatan
-                Text(
-                  widget.catatanDiarsipkan[index]['isi']!,
-                  maxLines: 2, // Batasi isi catatan menjadi 3 baris
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
+          return Dismissible(
+            key: Key(widget.catatanDiarsipkan[index]['judul']!),
+            direction: DismissDirection.horizontal,
+            background: Container(
+              color: Colors.red,
+              alignment: Alignment.centerLeft,
+              child: const Icon(
+                Icons.delete,
+                color: Colors.white,
+              ),
             ),
-            onTap: () {
-              _editCatatan(index);
+            secondaryBackground: Container(
+              color: Colors.green,
+              alignment: Alignment.centerRight,
+              child: const Icon(
+                Icons.archive,
+                color: Colors.white,
+              ),
+            ),
+            onDismissed: (direction) {
+              if (direction == DismissDirection.endToStart) {
+                _hapusDariArsip(index);
+              } else if (direction == DismissDirection.startToEnd) {
+                _pindahKeHalamanUtama(index);
+              }
             },
+            child: ListTile(
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.catatanDiarsipkan[index]['judul']!,
+                    maxLines: 1,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    widget.catatanDiarsipkan[index]['isi']!,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+              onTap: () {
+                _editCatatan(index);
+              },
+            ),
           );
         },
       ),
@@ -362,20 +391,20 @@ class _HalamanArsipState extends State<HalamanArsip> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Edit Catatan'),
+          title: const Text('Edit Catatan'),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 TextField(
                   controller: _judulController,
-                  decoration: InputDecoration(labelText: 'Judul'),
+                  decoration: const InputDecoration(labelText: 'Judul'),
                   maxLines: 1,
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 TextField(
                   controller: _isiController,
-                  decoration: InputDecoration(labelText: 'Isi Catatan'),
+                  decoration: const InputDecoration(labelText: 'Isi Catatan'),
                   maxLines: null,
                 ),
               ],
@@ -386,14 +415,14 @@ class _HalamanArsipState extends State<HalamanArsip> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Batal'),
+              child: const Text('Batal'),
             ),
             ElevatedButton(
               onPressed: () {
                 _simpanCatatan(index);
                 Navigator.of(context).pop();
               },
-              child: Text('Simpan'),
+              child: const Text('Simpan'),
             ),
           ],
         );
@@ -409,11 +438,36 @@ class _HalamanArsipState extends State<HalamanArsip> {
       _judulController.clear();
       _isiController.clear();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Catatan berhasil diperbarui'),
         ),
       );
     });
+  }
+
+  void _hapusDariArsip(int index) {
+    setState(() {
+      widget.catatanDiarsipkan.removeAt(index);
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Catatan berhasil dihapus dari arsip'),
+      ),
+    );
+  }
+
+  void _pindahKeCatatanDisimpan(int index) {
+    setState(() {
+      Map<String, String> catatan = widget.catatanDiarsipkan[index];
+      widget.catatanDiarsipkan.removeAt(index);
+      var _catatanDisimpan; // Menggunakan variabel _catatanDisimpan dari halaman utama
+      _catatanDisimpan.add(catatan);
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Catatan berhasil dipindahkan ke halaman utama'),
+      ),
+    );
   }
 
   @override
@@ -422,4 +476,6 @@ class _HalamanArsipState extends State<HalamanArsip> {
     _isiController.dispose();
     super.dispose();
   }
+
+  void _pindahKeHalamanUtama(int index) {}
 }
